@@ -5,11 +5,12 @@ import Typography from "@mui/material/Typography";
 
 export const metadata = { title: "Detail profilu | ZoškaSnap" };
 
-export default function ProfileDetail() {
+export default function ProfileDetail({params}: 
+  {params: {id: string}}) {
 
   return (
 
-      <Typography> Detail profilu </Typography>
+      <Typography> Detail profilu {params.id}</Typography>
 
   );
 }
