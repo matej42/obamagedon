@@ -10,7 +10,7 @@ export default function PostDetail() {
 
   return (
 
-      <Typography> predkomentare</Typography>
+      <Typography> list komentarov</Typography>
 
   );
 }
