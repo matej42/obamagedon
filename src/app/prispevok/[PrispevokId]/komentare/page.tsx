@@ -1,16 +1,15 @@
-// src/app/prispevok/[id]/page.tsx
-
+// src/app/prispevok/[prispevokid]/komentare/page.tsx
 
 import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
-export const metadata = { title: "komentare | ZoškaSnap" };
+export const metadata = { title: "Zoznam komentarov | NaPrdAplikacia" }
 
-
-export default function PostDetail() {
+export default function CommentList() {
 
   return (
-
-      <Typography> list komentarov</Typography>
-
+    <Container>
+        <Typography> Tu je zoznam komentarov | Stalkujte si ich kolko chcete, aj tak tu nic nie je </Typography>
+    </Container>
   );
 }

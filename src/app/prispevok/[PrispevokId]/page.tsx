@@ -1,18 +1,15 @@
-// src/app/prispevok/[id]/page.tsx
-
+// src/app/prispevok/[prispevokid]/page.tsx
 
 import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
-export const metadata = { title: "Detail prispevku | ZoškaSnap" };
+export const metadata = { title: "Detail Prispevku | NaPrdAplikacia" }
 
-
-export default function PostDetail({params}: 
-  {params: {PrispevokId: string}}
-) {
+export default function PostDetail({params}: { params: {prispevokid: string}}) {
 
   return (
-
-      <Typography> Detail prispevku {params.PrispevokId}</Typography>
-
+    <Container>
+        <Typography> Tu je nejaky prispevok cislo {params.prispevokid} | Stalkujte si tu kolko chcete, aj tak tu nic nie je </Typography>
+    </Container>
   );
 }

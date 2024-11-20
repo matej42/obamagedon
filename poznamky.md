@@ -16,3 +16,7 @@ export default function PostCommentDetails({params}:
 
   );
 }
+
+npx prisma studio
+
+ak velky spatny db : npx prisma migrate dev --name init

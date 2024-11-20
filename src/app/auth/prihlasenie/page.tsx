@@ -1,14 +1,10 @@
 // src/app/auth/prihlasenie/page.tsx
 
-import Typography from "@mui/material/Typography";
 
-export const metadata = { title: "Prihlasenie uzivatela | ZoškaSnap" };
+import SignInView from "../../../sections/SignInView";
 
-export default function SignIn() {
+export const metadata = { title: "Prihlásenie užívateľa | ZoškaSnap" };
 
-  return (
-
-      <Typography> Prihlasenie uzivatela </Typography>
-
-  );
+export default function SignInPage() {
+  return <SignInView />;
 }
