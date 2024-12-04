@@ -1,21 +1,19 @@
-// src/sections/SignInView.tsx
-
 "use client";
 
 import {
-    Button,
-    //Checkbox,
-    Container,
-    //FormControlLabel,
-    //TextField,
-    Typography,
-    //Divider,
-  } from "@mui/material";
-  import { signIn } from "next-auth/react";
-  import GoogleIcon from "@mui/icons-material/Google";
-  //import FacebookIcon from "@mui/icons-material/Facebook";
+  Button,
+  Container,
+  Typography,
+} from "@mui/material";
+import { signIn } from "next-auth/react";
+import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { useTheme } from "@mui/material/styles"; // Import useTheme to access theme
+import { buttonStyles } from "../theme/buttonStyles"; // Import the button styles
 
 export default function SignInView() {
+  const theme = useTheme(); // Get theme using useTheme hook
+
   return (
     <Container
       maxWidth="xs"
@@ -35,21 +33,31 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
-      {/* Google Sign Up */}
+      {/* Google Sign Up Button with Rainbow Vertical Stripes */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
-        sx={{ mb: 1 }}
+        sx={buttonStyles.googleButton} // Use googleButton styles from the separate object
       >
         Prihlásiť sa účtom Google
       </Button>
 
-
+      {/* GitHub Sign Up Button with Reversed Rainbow Vertical Stripes */}
+      <Button
+        variant="outlined"
+        fullWidth
+        startIcon={<GitHubIcon />}
+        onClick={() => signIn("github")}
+        sx={buttonStyles.githubButton} // Use githubButton styles from the separate object
+      >
+        Prihlásiť sa účtom GitHub
+      </Button>
     </Container>
   );
 }
+
 
 
       // {/* Facebook Sign Up */}

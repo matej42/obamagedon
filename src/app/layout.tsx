@@ -1,9 +1,11 @@
 // src/app/layout.tsx
+"use client"; // Mark this component as client-side
 
 import { Metadata } from "next";
-import "./globals.css";
 import Navbar from "../components/Navbar";
 import AuthProvider from "../components/AuthProvider";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../theme/theme"; // Import the theme
 
 export const metadata: Metadata = {
   title: "SnapZoška",
@@ -18,14 +20,16 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body>
-        <AuthProvider>
-          <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <main style={{ flexGrow: 1 }}>
-              {children}
-            </main>
-          </div>
-          <Navbar /> 
-        </AuthProvider>
+        <ThemeProvider theme={theme}>
+          <AuthProvider>
+            <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+              <main style={{ flexGrow: 1 }}>
+                {children}
+              </main>
+            </div>
+            <Navbar />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
