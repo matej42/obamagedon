@@ -8,11 +8,9 @@ import {
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { useTheme } from "@mui/material/styles"; // Import useTheme to access theme
-import { buttonStyles } from "../theme/buttonStyles"; // Import the button styles
+
 
 export default function SignInView() {
-  const theme = useTheme(); // Get theme using useTheme hook
 
   return (
     <Container
@@ -33,13 +31,17 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
+      <Typography variant="body1" sx={{ mb: 6 }}>
+        Už nemáte účet? <a href="/auth/registracia">Registruj sa</a>
+      </Typography>
+
+
       {/* Google Sign Up Button with Rainbow Vertical Stripes */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => signIn("google")}
-        sx={buttonStyles.googleButton} // Use googleButton styles from the separate object
       >
         Prihlásiť sa účtom Google
       </Button>
@@ -50,7 +52,6 @@ export default function SignInView() {
         fullWidth
         startIcon={<GitHubIcon />}
         onClick={() => signIn("github")}
-        sx={buttonStyles.githubButton} // Use githubButton styles from the separate object
       >
         Prihlásiť sa účtom GitHub
       </Button>

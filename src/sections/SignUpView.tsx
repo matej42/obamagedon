@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub";
 //import FacebookIcon from "@mui/icons-material/Facebook";
 
 export default function SignUpView() {
@@ -51,6 +52,14 @@ export default function SignUpView() {
         Registrovať sa účtom Google
       </Button>
 
+      <Button
+        variant="outlined"
+        fullWidth
+        startIcon={<GitHubIcon />}
+        onClick={() => signIn("github")}
+      >
+        Prihlásiť sa účtom GitHub
+      </Button>
 
     </Container>
   );

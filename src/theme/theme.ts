@@ -1,28 +1,20 @@
-// src/theme/theme.ts
-import { createTheme } from "@mui/material/styles";
-
-// Create your theme
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#4285F4', // Google Blue
-    },
-    secondary: {
-      main: '#000000', // Default text color for GitHub button
-    },
+// rainbowPalette.ts
+export const rainbowPalette = {
+  primary: {
+    main: "#ff0000", // Red
   },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          padding: '12px 24px',
-          fontWeight: 'bold',
-          borderRadius: '8px',
-          textTransform: 'none', // Prevent text from being capitalized
-        },
-      },
-    },
+  secondary: {
+    main: "#ffa500", // Orange
   },
-});
-
-export default theme;
+  background: {
+    default: "#ffff00", // Yellow
+    paper: "#00ff00", // Green
+  },
+  text: {
+    primary: "#0000ff", // Blue
+    secondary: "#4b0082", // Indigo
+  },
+  action: {
+    active: "#ee82ee", // Violet
+  },
+};
