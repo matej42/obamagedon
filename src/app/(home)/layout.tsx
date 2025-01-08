@@ -20,7 +20,7 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
     // If unauthenticated, display a sign-in button and prevent access to home content
     return (
       <div>
-        <Typography>You need to sign in to access this content.</Typography>
+        <Typography>You need to sign in to access this content fr fr no cap.</Typography>
       </div>
     );
   }
