@@ -1,22 +1,28 @@
-// src/sections/SignUpView.tsx
+"use client"; // Client-side only component
 
-"use client";
-
-import {
-  Button,
-  //Checkbox,
-  Container,
-  //FormControlLabel,
-  //TextField,
-  Typography,
-  //Divider,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Button, Container, Typography, Checkbox, FormControlLabel, Link } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
-//import FacebookIcon from "@mui/icons-material/Facebook";
+import { useRouter } from "next/navigation";
 
 export default function SignUpView() {
+  const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
+  };
+
+  const handleSignUp = (provider: string) => {
+    if (!isChecked) {
+      alert("Pre pokračovanie musíte súhlasiť s podmienkami používania a GDPR.");
+      return;
+    }
+    signIn(provider);
+  };
+
   return (
     <Container
       maxWidth="xs"
@@ -37,85 +43,77 @@ export default function SignUpView() {
       </Typography>
 
       {/* Sign-in link */}
-      <Typography variant="body1" sx={{ mb: 6 }}>
-        Už máte účet? <a href="/auth/prihlasenie">Prihláste sa</a>
+      <Typography variant="body1" sx={{ mb: 4 }}>
+        Už máte účet?{" "}
+        <Link
+          component="button"
+          onClick={() => router.push("/auth/prihlasenie")}
+          sx={{ cursor: "pointer" }}
+        >
+          Prihláste sa
+        </Link>
       </Typography>
+
+      {/* Terms and GDPR Checkbox */}
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+            color="secondary"
+          />
+        }
+        label={
+          <Typography variant="body2">
+            Súhlasím s{" "}
+            <Link
+              component="button"
+              onClick={() => router.push("/gdpr")} // Navigate to GDPR page
+              sx={{ cursor: "pointer" }}
+            >
+              GDPR
+            </Link>{" "}
+            a{" "}
+            <Link
+              component="button"
+              onClick={() => router.push("/podmienky")} // Navigate to Terms page
+              sx={{ cursor: "pointer" }}
+            >
+              podmienkami používania
+            </Link>.
+          </Typography>
+        }
+        sx={{ mb: 3 }}
+      />
 
       {/* Google Sign Up */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
-        onClick={() => signIn("google")}
+        onClick={() => handleSignUp("google")}
         sx={{ mb: 1 }}
       >
         Registrovať sa účtom Google
       </Button>
 
+      {/* GitHub Sign Up */}
       <Button
-        variant="outlined"
+        variant="contained"
         fullWidth
         startIcon={<GitHubIcon />}
-        onClick={() => signIn("github")}
+        onClick={() => handleSignUp("github")}
+        sx={{
+          mb: 1,
+          bgcolor: "#333",
+          color: "white",
+          "&:hover": {
+            bgcolor: "#444",
+          },
+        }}
       >
-        Prihlásiť sa účtom GitHub
+        Registrovať sa účtom GitHub
       </Button>
-
     </Container>
   );
 }
-
-
-      // {/* Facebook Sign Up */}
-      // <Button
-      //   variant="outlined"
-      //   fullWidth
-      //   startIcon={<FacebookIcon />}
-      //   sx={{ mb: 4 }}
-      // >
-      //   Registrovať sa účtom Facebook
-      // </Button>
-
-      // {/* Divider */}
-      // <Divider sx={{ width: "100%", mb: 2 }}>
-      //   <Typography variant="body2">alebo</Typography>
-      // </Divider>
-
-      // {/* Email */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Email"
-      //   type="email"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="your@email.com"
-      // />
-
-      // {/* Password */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Password"
-      //   type="password"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="******"
-      // />
-
-      // {/* Checkbox */}
-      // <FormControlLabel
-      //   control={<Checkbox color="primary" />}
-      //   label="Chcem dostávať novinky na email"
-      //   sx={{ mt: 2 }}
-      // />
-
-      // {/* Sign Up Button */}
-      // <Button
-      //   variant="contained"
-      //   fullWidth
-      //   size="large"
-      //   sx={{ mt: 2, mb: 1 }}
-      // >
-      //   Registrovať
-      // </Button>

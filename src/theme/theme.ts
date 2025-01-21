@@ -49,7 +49,7 @@ export const lightTheme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          color: '#f50057', // pink color for links
+          color: '#00bcd4', // pink color for links
           textDecoration: 'none', // No underline by default
           fontStyle: 'italic', // Cursive style for links
           '&:hover': {
