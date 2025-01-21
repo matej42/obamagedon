@@ -4,10 +4,10 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ReactNode, useEffect } from "react";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import AuthKeeper from "@/components/AuthKeeper"; // Optional: if you need AuthKeeper for page wrapping
+
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: session, status } = useSession();
   const router = useRouter();
   useEffect(() => {
