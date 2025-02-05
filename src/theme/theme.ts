@@ -39,11 +39,11 @@ const darkPalette = {
 // Create the theme
 export const lightTheme = createTheme({
   palette: {
-    mode: 'light', // Set the mode to 'light'
-    ...lightPalette, // Add light palette colors
+    mode: 'light', 
+    ...lightPalette, 
   },
   typography: {
-    fontFamily: '"Roboto", "Arial", sans-serif', // Set global font family
+    fontFamily: '"Roboto", "Arial", sans-serif', 
   },
   components: {
     MuiLink: {
@@ -74,7 +74,7 @@ export const darkTheme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          color: '#ff4081', // Light pink color for links in dark mode
+          color: '#00bcd4', 
           textDecoration: 'none', // No underline by default
           fontStyle: 'italic', // Cursive style for links
           '&:hover': {
